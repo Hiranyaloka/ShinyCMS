@@ -21,55 +21,36 @@
 	</li>
 	[%- END %]
 
-	<li class="topmenu">
+        <li class="topmenu"><a href="#">More</a>
+        <div class="dropdown">
+            <ul>
+	<li>
 		<a href="/news"
 		[%- IF controller == 'News' OR meta.menu_selected == 'News' %] class="selected"[% END %]>News</a>
 	</li>
 
-	<li class="topmenu">
+	<li>
 		<a href="/blog"
 		[%- IF controller == 'Blog' OR meta.menu_selected == 'Blog' %] class="selected"[% END %]>Blog</a>
-		<div class="dropdown">
-			<ul>
-				<li>
-					<a href="[% c.uri_for( '/blog', now.year, now.month )  %]">Archive</a>
-				</li>
-			</ul>
-		</div>
 	</li>
-	<li class="topmenu">
+	<li>
 		<a href="/forums"
 		[%- IF controller == 'Forums' OR meta.menu_selected == 'Forums' %] class="selected"[% END %]>Forums</a>
 	</li>
 
-	<li class="topmenu">
+	<li>
 		<a href="/events"
 		[%- IF controller == 'Events' OR meta.menu_selected == 'Events' %] class="selected"[% END %] >Events</a>
 		
-		<div class="dropdown">
-		<ul>
-			<li>
-				<a href="[% c.uri_for( '/events', now.year, now.month )  %]">Archive</a>
-			</li>
-		</ul>
-		</div>
 	</li>
 
-	<li class="topmenu">
+	<li>
 		<a href="/shop"
 		[%- IF controller == 'Shop' OR meta.menu_selected == 'Shop' %] class="selected"[% END %]>Shop</a>
-		<div class="dropdown">		
-		<ul>
-			<li>
-				<a href="/shop/recent">Recent items</a>
-			</li>
-			<li>
-				<a href="/shop/basket">Your Basket</a>
-			</li>
-		</ul>
-		</div>		
 	</li>
-	
+        </ul>
+        </div><!-- end .dropdown -->
+        </li>
 </ul>
 
 <form id="search_form" action="/search" method="post">
