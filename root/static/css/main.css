@@ -348,7 +348,6 @@ h3 {
 	font-size:			120%;
 	margin:				20px 0 10px 0;
 }
-by Adm
 
 h4 {
 	margin:				10px 0 10px 0;
@@ -371,7 +370,8 @@ ul,ol {
 
 #header {
 	height:				160px;
-	width:				100%;
+	width:				95%;
+        margin-left:                    5%;
 }
 
 #search_form {
@@ -405,15 +405,15 @@ ul,ol {
 
 #logo {
 	width:				339px;
-	height:				90px;
-	margin:				28px 0 0 0;
+	height:				130px;
+	margin:				10px 0 0 0;
 	float:				left;
 }
 
 #tagline {
 	float:				right;
 	font-size:			1.6em;
-	color:				#666666;
+	color:				#483F92;
 	font-family:			Myriad Pro,sans-serif;
 	padding:			60px 20px 0 0;
 }
@@ -421,7 +421,7 @@ ul,ol {
 /* =========== ( Menu ) ========== */
 
 #menu {
-	background:		#666666;
+	background:		#483F92;
 	height:			45px;
 }
 
@@ -434,10 +434,13 @@ ul,ol {
 	font-family:		Myriad Pro,sans-serif;
 }
 
-#menu a.selected {
+li.topmenu a.selected {
+    background: #9999CB;
 }
 
 #menu a:hover {
+/*    background: #28004b; */
+    background: #9999CB;
 }
 
 ul.topmenu {
@@ -486,7 +489,7 @@ li.topmenu a:hover {
 	top:			100%;
 	display: 		none;
 	z-index:		100;
-	background:		#666666;
+	background:		#483F92;
 	width:			200px;
 }
 
@@ -564,7 +567,7 @@ li.topmenu a:hover {
 	font-size:		24px;
 	color:			#ffffff;
 	text-transform:		uppercase;
-	background:		#6d6d6d;
+	background:		#483f92;
 	padding:		8px 15px 8px 15px;
 }
 
@@ -593,7 +596,7 @@ li.topmenu a:hover {
 .subpage-image {
 	float:			right;
 	margin:			0 0 15px 20px;
-	border:			1px solid #666666;
+	border:			1px solid #483F92;
 	max-width:		400px;
 	height:			auto;
 }
@@ -930,7 +933,7 @@ a.post-name {
 
 .buttons a {
 	text-decoration:	none;
-	background:			#666666;
+	background:			#483F92;
 	color:				#ffffff;
 	font-weight:		bold;
 	font-size:			1.5em;
@@ -1328,7 +1331,7 @@ a.post-name {
 }
 
 .reset:hover {
-	background:			#666666;
+	background:			#483F92;
 }
 
 .thankyou {
