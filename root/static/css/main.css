@@ -581,6 +581,11 @@ li.topmenu a:hover {
 	margin:			0 0 6px 0;
 }
 
+#home #impact {
+	margin 0 auto;
+	padding: 0 9px;
+}
+
 /* =========== ( Subpages ) ========== */
 
 
@@ -1797,5 +1802,4 @@ td {
 	float:			left;
 	margin-right:		5px;
 }
-
 

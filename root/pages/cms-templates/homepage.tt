@@ -1,16 +1,38 @@
 [%-	meta.wrapper       = 'site-wrapper.tt';
 	meta.title         = page.name;
 	meta.menu_selected = page.name;
+        head.meta_keywords = 'polestar lifetime learning';
+        meta.stylesheets   = [ 'jshowoff' ];
+        meta.url_name      = page.url_name;
 %]
 
-<div id="welcome">
+[% slideshow = [
+        [ elements.image1, elements.caption1 ],
+        [ elements.image2, elements.caption2 ],
+        [ elements.image3, elements.caption3 ],
+        [ elements.image4, elements.caption4 ],
+        [ elements.image5, elements.caption5 ],
+        [ elements.image6, elements.caption6 ]
+    ]
+%]
+<div id="impact">
+<div id="basicFeatures">
+[% FOREACH slide IN slideshow %]
+    [% IF slide.0.length %]
+        <div class="slides" style="background:url([% c.uri_for( '/static', upload_dir, 'images', slide.0 ) %])">
+                <span class="caption">[% slide.1 %]</span>
+        </div>
+    [% END %]
+[%- END -%]
+</div> <!-- end #slideshow -->
+</div><!-- end #impact -->
 
-	<img src="[% c.uri_for( '/static', 'images', elements.video_url ) %]" class="welcome-image" alt="Welcome to ShinyCMS" />
+<div id="welcome">
 
 	<h2>	[% elements.heading1 | html %]
 	</h2>
 
-	[% elements.html1 %]
+        [% USE MultiMarkdown; FILTER multimarkdown; elements.body_md ; END %]
 </div>
 
 <div class="homepage-panel">
@@ -26,7 +48,6 @@
 	[%- END %]
 	</ul>
 	[%- END %]
-	
 </div>
 
 
@@ -37,7 +58,7 @@
 		</h3>
 		<ul>
 		[%- FOREACH blog_post IN blog_posts %]
-			<li>	<a href="[% c.uri_for( '/blog', blog_post.posted.year, blog_post.posted.month, blog_post.url_title ) %]">[% blog_post.title | html %]</a> 
+			<li>	<a href="[% c.uri_for( '/blog', blog_post.posted.year, blog_post.posted.month, blog_post.url_title ) %]">[% blog_post.title | html %]</a>
 			<!-- by <a href="[% c.uri_for( '/user', blog_post.author.username ) %]">[% blog_post.author.display_name || blog_post.author.username %]</a> -->
 			[%- IF blog_post.discussion %]
 			([% blog_post.comment_count %] comment[% 's' UNLESS blog_post.comment_count == 1 %])
@@ -73,4 +94,15 @@
 			<a href="[% c.uri_for( '/forums', most_recent.post.forum.section.url_name, most_recent.post.forum.url_name, most_recent.post.id, most_recent.post.url_title ) %]#comment-[% most_recent.id %]">[% most_recent.title || most_recent.body | remove( '<.+?>' ) | truncate | html %]</a> by [% IF most_recent.author_type == 'Site User' %]<a href="[% c.uri_for( '/user', most_recent.author.username ) %]">[% most_recent.author.display_name || most_recent.author.username %]</a>[% ELSIF most_recent.author_type == 'Unverified' %][% most_recent.author_name %][% ELSE %]Anonymous[% END %] at [% most_recent.posted.strftime('%H:%M') %] on [% most_recent.posted.day %] [% most_recent.posted.month_abbr %] [% most_recent.posted.year %]
 		</p>
 	</div>
+
+<script type="text/javascript">
+$(document).ready(function(){ $('#basicFeatures').jshowoff({
+        links: false,
+        controls: false,
+        effect: 'fade',
+        cssClass: 'basicFeatures',
+        hoverPause: false
+}); });
+</script>
+
 
