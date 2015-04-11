@@ -35,6 +35,7 @@ drop table if exists transaction_log;
 drop table if exists shop_item_category;
 drop table if exists shop_category;
 drop table if exists shop_item;
+drop table if exists shop_item_view;
 drop table if exists shop_item_element;
 drop table if exists shop_product_type;
 drop table if exists shop_product_type_element;
@@ -607,7 +608,6 @@ create table if not exists paid_list (
 	description		text			,
 	
 	mailing_list	int				, # list to move recipient to after auto-emails are all sent
-	has_captcha		boolean			default false,	# Protect subscription form with reCaptcha?
 	
 	created			timestamp		not null default current_timestamp,
 	
@@ -1009,6 +1009,21 @@ create table if not exists shop_item (
 	unique  key shop_item_product_code ( code ),
 	foreign key shop_item_product_type ( product_type ) references shop_product_type ( id ),
 	foreign key shop_item_discussion   ( discussion   ) references discussion ( id ),
+	primary key ( id )
+)
+ENGINE=InnoDB;
+
+
+create table if not exists shop_item_view (
+	id				int				not null auto_increment,
+	
+	item			int				not null,
+	user			int				,
+	
+	updated			timestamp		not null default current_timestamp,
+	
+	foreign key shop_item_view_item ( item ) references shop_item ( id ),
+	foreign key shop_item_view_user ( user ) references user      ( id ),
 	primary key ( id )
 )
 ENGINE=InnoDB;
