@@ -4,17 +4,15 @@
 	head.meta_description = page.description;
 %]
 
-
-<img src="[% c.uri_for( '/static', upload_dir, 'images', elements.image1 ) %]" alt="" class="subpage-image">
+[% IF elements.image1.length %]
+<img src="[% c.uri_for( '/static', upload_dir, 'images', elements.image1 ) %]" alt="[% meta.title %]" class="subpage-image">
+[% END %]
 
 <h2>
 	[% elements.heading1 | html %]
 </h2>
 
-[% elements.paragraphs1 | html_para %]
+[%#  elements.body_md | html_para %]
 
-[%# USE Markdown; elements.paragraphs1 | markdown %]
-
-[% elements.html1 %]
-
+[% USE MultiMarkdown; FILTER multimarkdown; elements.body_md ; END %]
 
