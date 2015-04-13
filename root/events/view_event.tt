@@ -16,7 +16,8 @@
 	[%- END %]
 </p>
 <p>
-	[% event.description | html %]
+	[%# event.description | html %]
+        [% USE MultiMarkdown; FILTER multimarkdown; event.description  ; END %]
 </p>
 [%- IF event.image %]
 <p>
@@ -34,11 +35,11 @@
 	<a href="mailto:[% event.email | url %]">Email Organiser</a><br>
 	[%- END %]
 			[%- IF event.address AND event.postcode %]
-			<a href="http://maps.google.co.uk/?q=[% event.address _ ', ' _ event.postcode | url %]">Google Map</a><br>
+			<a href="[% c.config.map_search_url %][% event.address _ ', ' _ event.postcode | url %]">View Map</a><br>
 			[%- ELSIF event.postcode %]
-			<a href="http://maps.google.co.uk/?q=[% event.postcode | url %]">Google Map</a><br>
+			<a href="[% c.config.map_search_url %][% event.postcode | url %]">View Map</a><br>
 			[%- ELSIF event.address %]
-			<a href="http://maps.google.co.uk/?q=[% event.address | url %]">Google Map</a><br>
+			<a href="[% c.config.map_search_url %][% event.address | url %]">View Map</a><br>
 			[%- END %]
 </p>
 

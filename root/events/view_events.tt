@@ -46,7 +46,8 @@
 		</td>
 		<td>
 			<b><a href="[% c.uri_for( event.start_date.year, event.start_date.month, event.url_name ) %]">[% event.name | html %]</a></b>
-			<br>[% event.description | html %]
+			<br>[%# event.description | html %]
+                            [% USE MultiMarkdown; FILTER multimarkdown; event.description  ; END %]
 		</td>
 		<td>
 			[%- IF event.booking_link %]
@@ -59,11 +60,11 @@
 			<a href="mailto:[% event.email | url %]">Email Organiser</a><br>
 			[%- END %]
 			[%- IF event.address AND event.postcode %]
-			<a href="http://maps.google.co.uk/?q=[% event.address _ ', ' _ event.postcode | url %]">Google Map</a><br>
+			<a href="[% c.config.map_search_url %][% event.address _ ', ' _ event.postcode | url %]">View Map</a><br>
 			[%- ELSIF event.postcode %]
-			<a href="http://maps.google.co.uk/?q=[% event.postcode | url %]">Google Map</a><br>
+			<a href="[% c.config.map_search_url %][% event.postcode | url %]">View Map</a><br>
 			[%- ELSIF event.address %]
-			<a href="http://maps.google.co.uk/?q=[% event.address | url %]">Google Map</a><br>
+			<a href="[% c.config.map_search_url %][% event.address | url %]">View Map</a><br>
 			[%- END %]
 		</td>
 	</tr>
