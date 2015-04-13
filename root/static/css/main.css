@@ -404,7 +404,7 @@ ul,ol {
 }
 
 #logo {
-	width:				339px;
+	width:				240px;
 	height:				130px;
 	margin:				10px 0 0 0;
 	float:				left;
@@ -412,10 +412,10 @@ ul,ol {
 
 #tagline {
 	float:				right;
-	font-size:			1.6em;
+	font-size:			120%;
 	color:				#483F92;
 	font-family:			Myriad Pro,sans-serif;
-	padding:			60px 20px 0 0;
+	padding:			5.5em 4em 0 0;
 }
 
 /* =========== ( Menu ) ========== */
@@ -507,6 +507,7 @@ li.topmenu a:hover {
 	background:			transparent;
 	padding:			8px 20px 8px 15px;
 	font-family:		Myriad Pro,sans-serif;
+        height:                 auto;
 }
 
 .dropdown li a:hover,
