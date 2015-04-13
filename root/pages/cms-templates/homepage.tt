@@ -35,10 +35,9 @@
         [% USE MultiMarkdown; FILTER multimarkdown; elements.body_md ; END %]
 </div>
 
+[%- news_posts = c.controller( 'News' ).get_posts( c, 1, 5 ) %]
+[%- IF news_posts.0.length %]
 <div class="homepage-panel">
-
-	[%- news_posts = c.controller( 'News' ).get_posts( c, 1, 5 ) %]
-	[%- IF news_posts %]
 	<h3>	News
 	</h3>
 	<ul>
@@ -47,13 +46,13 @@
 		</li>
 	[%- END %]
 	</ul>
-	[%- END %]
 </div>
+[%- END %]
 
 
+[%- blog_posts = c.controller( 'Blog' ).get_posts( c, 1, 5 ) %]
+[%- IF blog_posts.0.length %]
 	<div class="homepage-panel">
-		[%- blog_posts = c.controller( 'Blog' ).get_posts( c, 1, 5 ) %]
-		[%- IF blog_posts %]
 		<h3>	Blog
 		</h3>
 		<ul>
@@ -68,12 +67,12 @@
 			</li>
 		[%- END %]
 		</ul>
-		[%- END %]
 	</div>
+[%- END %]
 
+[%- events = c.controller( 'Events' ).get_events( c, 5 ) %]
+[%- IF events.0.length %]
 	<div class="homepage-panel">
-		[%- events = c.controller( 'Events' ).get_events( c, 5 ) %]
-		[%- IF events %]
 		<h3>	Events
 		</h3>
 		<ul>
@@ -82,18 +81,19 @@
 			</li>
 		[%- END %]
 		</ul>
-		[%- END %]
 	</div>
+[%- END %]
 
+[%- most_recent = c.controller( 'Forums' ).most_recent_comment( c ) %]
+[% IF most_recent.0.length %]
 	<div class="homepage-panel">
-
-		[%- most_recent = c.controller( 'Forums' ).most_recent_comment( c ) %]
 		<h3>	Forum
 		</h3>
 		<p>
 			<a href="[% c.uri_for( '/forums', most_recent.post.forum.section.url_name, most_recent.post.forum.url_name, most_recent.post.id, most_recent.post.url_title ) %]#comment-[% most_recent.id %]">[% most_recent.title || most_recent.body | remove( '<.+?>' ) | truncate | html %]</a> by [% IF most_recent.author_type == 'Site User' %]<a href="[% c.uri_for( '/user', most_recent.author.username ) %]">[% most_recent.author.display_name || most_recent.author.username %]</a>[% ELSIF most_recent.author_type == 'Unverified' %][% most_recent.author_name %][% ELSE %]Anonymous[% END %] at [% most_recent.posted.strftime('%H:%M') %] on [% most_recent.posted.day %] [% most_recent.posted.month_abbr %] [% most_recent.posted.year %]
 		</p>
 	</div>
+[% END %]
 
 <script type="text/javascript">
 $(document).ready(function(){ $('#basicFeatures').jshowoff({
@@ -104,5 +104,4 @@ $(document).ready(function(){ $('#basicFeatures').jshowoff({
         hoverPause: false
 }); });
 </script>
-
 
