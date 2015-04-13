@@ -41,7 +41,7 @@
 <div id="container">
 	<div id="header">
 		<div id="logo">
-			<a href="/" title="Home - [% c.config.site_name OR 'ShinySite' %]"><img src="/static/images/logo130.png" alt="Logo - [% c.config.site_name OR 'ShinySite' %]"></a>
+			<a href="/" title="Home - [% c.config.site_name OR 'ShinySite' %]"><img src="/static/images/logo.png" height='123' width='234' alt="Logo - [% c.config.site_name OR 'ShinySite' %]"></a>
 		</div>
 	
 		<div id="tagline">
